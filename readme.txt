@@ -21,10 +21,10 @@ It checks to make sure the user is logged in, AND has purchased that particular 
 We also have 2 shortcodes for displaying ALL of the posts/pages that are available for purchase, along with a shortcode to show only all the pages/posts that a user has purchased.
 
 `[woocommerce-payperpost template='purchased']`
-This outputs a <ul> of the posts that have been purchased by the current user logged in.
+This outputs a `<ul>` of the posts that have been purchased by the current user logged in.
 
 `[woocommerce-payperpost template='all']`
-This outputs a <ul> of the posts that can be purchased by a user.
+This outputs a `<ul>` of the posts that can be purchased by a user.
 
 = Requirements =
 This plugin DOES require WooCommerce to be installed and active.  I have tested this with the latest version to date version 2.1.9
