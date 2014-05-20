@@ -56,5 +56,7 @@ As of right now, there is no questions posed.
 
 == Changelog ==
 
+= 1.2.1 =
+* Fixed error displaying when debug mode is enabled for Missing argument 2 on get() function *
 = 1.2 =
 * Initial Release

@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.emoxie.com/woocommerce-pay-per-post/
  * Description: Allows for the sale of a specific post/page in Wordpress through WooCommerce
  * Author: Matt Pramschufer
- * Version: 1.2
+ * Version: 1.2.1
  * Author URI: http://www.emoxie.com/
  */
 if (!class_exists('Woocommerce_PayPerPost')) {
@@ -43,7 +43,7 @@ if (!class_exists('Woocommerce_PayPerPost')) {
             }
         }
 
-        public static function get($value, $id) {
+        public static function get($value, $id = null) {
             if (empty($id)) {
                 global $post;
                 $id = $post->ID;
