@@ -3,7 +3,7 @@ Contributors: mattpramschufer
 Tags: woocommerce, payperpost, pay-per-post, pay per post, woo commerce, sell posts, sell pages
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mattpram%40gmail%2ecom
 Requires at least: 3.8
-Tested up to: 3.9.1
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -56,6 +56,8 @@ As of right now, there is no questions posed.
 
 == Changelog ==
 
+= 1.2.2 =
+* Removed the pagination from the products listed out on the purchased page. *
 = 1.2.1 =
 * Fixed error displaying when debug mode is enabled for Missing argument 2 on get() function *
 = 1.2 =
