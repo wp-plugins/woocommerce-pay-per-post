@@ -27,7 +27,7 @@ This outputs an unordered list of the posts that have been purchased by the curr
 This outputs an unordered list of the posts that can be purchased by a user.
 
 = Requirements =
-This plugin DOES require WooCommerce to be installed and active.  I have tested this with the latest version to date version 2.1.9
+This plugin DOES require WooCommerce to be installed and active.  I have tested this with the latest version to date Version 2.4.5.
 
 == Installation ==
 1. Activate the plugin through the `Plugins` menu in WordPress
