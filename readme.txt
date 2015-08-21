@@ -64,6 +64,7 @@ As of right now, there is no questions posed.
 == Changelog ==
 
 = 1.4 =
+* Made it so if you are an ADMIN you can view the post content.  If you need to see what the Oops screen looks like, just use a non logged in user.
 * Add in support for all registered custom post types, so you now do not need to hack the plugin to make it work for your custom post type!
 * Made it easier to enter in product ids, you now have a multiple select box instead of just a text field
 * Confirmed support for Wordpress 4.3
