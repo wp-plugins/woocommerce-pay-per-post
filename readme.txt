@@ -3,12 +3,12 @@ Contributors: mattpramschufer
 Tags: woocommerce, payperpost, pay-per-post, pay per post, woo commerce, sell posts, sell pages
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=mattpram%40gmail%2ecom
 Requires at least: 3.8
-Tested up to: 4.1
+Tested up to: 4.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Sell Pages/Posts through WooCommerce 2.xx quickly and easily.
+Sell Pages/Posts through WooCommerce 2.xx quickly and easily. Testup up to WooCommerce Version 2.4.5.
 
 == Description ==
 I looked everywhere and I couldn't find a plugin already out there, free or premium, that would do the simple fact of selling access to a particular page or post through WooCommerce.  So I decided to write my own.
@@ -38,17 +38,8 @@ This plugin DOES require WooCommerce to be installed and active.  I have tested 
 
 == Frequently Asked Questions ==
 
-**Question:** I am logged in as an Admin I still only see the Oops screen.
-**Answer:** If you want to view what the page looks like if you have purchased it all you need to do is simply create an order in WooCommerce and add yourself and the product to the order and save.
-
 **Question:** Can this plugin work with custom post types?
-**Answer:** Yes and No.  Out of the box it only works with regular posts or pages, but you can easily edit the code to include your custom post type.  You can look in the file woocommerce-payperpost.php and find the following code
-`public static function add_custom_meta_box() {
-     add_meta_box('woocommerce-payperpost-meta-box', __('WooCommerce Pay Per Post', 'textdomain'), __CLASS__ . '::output_meta_box', 'post', 'normal', 'high');
-     add_meta_box('woocommerce-payperpost-meta-box', __('WooCommerce Pay Per Post', 'textdomain'), __CLASS__ . '::output_meta_box', 'page', 'normal', 'high’);
-     add_meta_box('woocommerce-payperpost-meta-box', __('WooCommerce Pay Per Post', 'textdomain'), __CLASS__ . '::output_meta_box', ‘YOUR-CUSTOM-POST-TYPE-GOES-HERE', 'normal', 'high');
-
- }`
+**Answer:** Yes, this plugin worked with all custom post types.
 
 **Question:** How do you link to your post after an order has been placed.
 **Answer:** What I have done in the past is use the Order Notes for the product in WooCommerce. So what will happen is after they purchase, on the Payment Received page they will see the order notes, and they will get sent in the receipt also.
@@ -63,8 +54,6 @@ As of right now, there is no questions posed.
 == Screenshots ==
 
 1. Settings Screen
-2. How to find product id
-3. Where to put product id
 4. Admin view of Pay Per Post
 5. Frontend view of Pay Per Post NOT Purchased
 6. Frontend view of Pay Per Post PURCHASED
@@ -73,6 +62,12 @@ As of right now, there is no questions posed.
 
 
 == Changelog ==
+
+= 1.4 =
+* Add in support for all registered custom post types, so you now do not need to hack the plugin to make it work for your custom post type!
+* Made it easier to enter in product ids, you now have a multiple select box instead of just a text field
+* Confirmed support for Wordpress 4.3
+* Confirmed support for WooCommerce 2.4.5
 
 = 1.3 =
 * Added in the ability for multiple product IDs per post/page *
