@@ -63,6 +63,9 @@ As of right now, there is no questions posed.
 
 == Changelog ==
 
+= 1.4.1 =
+* Quick fix for the multiple select field for product ID.  Add in nopaging=true.
+
 = 1.4 =
 * Made it so if you are an ADMIN you can view the post content.  If you need to see what the Oops screen looks like, just use a non logged in user.
 * Add in support for all registered custom post types, so you now do not need to hack the plugin to make it work for your custom post type!
