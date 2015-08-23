@@ -19,6 +19,7 @@ class Woocommerce_PayPerPost_Admin {
 
     public static function register() {
         register_setting(WCPPP_ID . '_options', 'wcppp_oops_content');
+        register_setting(WCPPP_ID . '_options', 'wcppp_exclude_post_types');
     }
 
     public static function menu() {
@@ -26,7 +27,7 @@ class Woocommerce_PayPerPost_Admin {
         add_options_page(WCPPP_NICK . ' Plugin Options', WCPPP_NICK, 'manage_options', WCPPP_ID . '_options', array('Woocommerce_PayPerPost_Admin', 'options_page'));
     }
 
-    
+
     public static function options_page() {
         if (!current_user_can('manage_options')) {
             wp_die(__('You do not have sufficient permissions to access this page.'));
@@ -39,18 +40,18 @@ class Woocommerce_PayPerPost_Admin {
 
 }
 
-    
-  
-    /**
-     * Add the settings link to the plugin screen
-     */
-    $plugin_file = 'woocommerce-payperpost/woocommerce-payperpost.php';
-    add_filter( "plugin_action_links_{$plugin_file}", 'woocommerce_payperpost_plugin_action_links', 10, 2 );
 
-    function woocommerce_payperpost_plugin_action_links( $links, $file ) {
-            $settings_link = '<a href="' . admin_url( 'admin.php?page='.WCPPP_ID ) . '">' . __( 'Settings', WCPPP_ID.'_options' ) . '</a>';
-            array_unshift( $links, $settings_link );
-            return $links;
-    }
+
+/**
+ * Add the settings link to the plugin screen
+ */
+$plugin_file = 'woocommerce-payperpost/woocommerce-payperpost.php';
+add_filter( "plugin_action_links_{$plugin_file}", 'woocommerce_payperpost_plugin_action_links', 10, 2 );
+
+function woocommerce_payperpost_plugin_action_links( $links, $file ) {
+    $settings_link = '<a href="' . admin_url( 'admin.php?page='.WCPPP_ID ) . '">' . __( 'Settings', WCPPP_ID.'_options' ) . '</a>';
+    array_unshift( $links, $settings_link );
+    return $links;
+}
     
     

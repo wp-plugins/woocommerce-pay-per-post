@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.emoxie.com/woocommerce-pay-per-post/
  * Description: Allows for the sale of a specific post/page in Wordpress through WooCommerce
  * Author: Matt Pramschufer
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author URI: http://www.emoxie.com/
  */
 if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
@@ -58,8 +58,28 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 		public static function add_custom_meta_box() {
 
 			$post_types = get_post_types();
+
+			$defaultExcludedPostTypes = array(
+				'attachment',
+				'revision',
+				'nav_menu_item',
+				'product',
+				'product_variation',
+				'shop_order',
+				'shop_order_refund',
+				'shop_coupon',
+				'shop_webhook'
+			);
+
+			$userExcludedPostTypes = get_option( 'wcppp_exclude_post_types' );
+			$userExcludedPostTypes = explode(',', str_replace(' ', '',($userExcludedPostTypes)));
+
+			$excludedPostTypes = array_merge($defaultExcludedPostTypes, $userExcludedPostTypes);
+
 			foreach ( $post_types as $post_type ) {
-				add_meta_box( 'woocommerce-payperpost-meta-box', __( 'WooCommerce Pay Per Post', 'textdomain' ), __CLASS__ . '::output_meta_box', $post_type, 'normal', 'high' );
+				if(!in_array($post_type,$excludedPostTypes)){
+					add_meta_box( 'woocommerce-payperpost-meta-box', __( 'WooCommerce Pay Per Post', 'textdomain' ), __CLASS__ . '::output_meta_box', $post_type, 'normal', 'high' );
+				}
 			}
 
 		}

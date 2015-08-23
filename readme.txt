@@ -63,6 +63,10 @@ As of right now, there is no questions posed.
 
 == Changelog ==
 
+= 1.4.2 =
+* Excluded WooCommerce default custom post types from adding PPP Meta Box on.
+* Added in field in settings for users to be able to exclude specific custom post types.
+
 = 1.4.1 =
 * Quick fix for the multiple select field for product ID.  Add in nopaging=true.
 
