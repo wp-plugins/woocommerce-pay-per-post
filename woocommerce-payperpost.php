@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.emoxie.com/woocommerce-pay-per-post/
  * Description: Allows for the sale of a specific post/page in Wordpress through WooCommerce
  * Author: Matt Pramschufer
- * Version: 1.4.2
+ * Version: 1.4.3
  * Author URI: http://www.emoxie.com/
  */
 if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
@@ -57,6 +57,19 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 
 		public static function add_custom_meta_box() {
 
+			$post_types = self::get_post_types();
+
+			foreach ( $post_types as $post_type ) {
+				add_meta_box( 'woocommerce-payperpost-meta-box', __( 'WooCommerce Pay Per Post', 'textdomain' ), __CLASS__ . '::output_meta_box', $post_type, 'normal', 'high' );
+			}
+
+		}
+
+
+		/**
+		 * @return array
+		 */
+		protected static function get_post_types(){
 			$post_types = get_post_types();
 
 			$defaultExcludedPostTypes = array(
@@ -76,13 +89,17 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 
 			$excludedPostTypes = array_merge($defaultExcludedPostTypes, $userExcludedPostTypes);
 
+			$postTypes = array();
 			foreach ( $post_types as $post_type ) {
 				if(!in_array($post_type,$excludedPostTypes)){
-					add_meta_box( 'woocommerce-payperpost-meta-box', __( 'WooCommerce Pay Per Post', 'textdomain' ), __CLASS__ . '::output_meta_box', $post_type, 'normal', 'high' );
+					$postTypes[] = $post_type;
 				}
 			}
 
+			return $postTypes;
+
 		}
+
 
 		public static function output_meta_box() {
 
@@ -126,7 +143,7 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 				return;
 			}
 			// Stop the script if the user does not have edit permissions
-			if ( ! current_user_can( 'edit_post' ) ) {
+			if ( ! current_user_can( 'edit_posts' ) ) {
 				return;
 			}
 			// Save the textfield
@@ -163,7 +180,6 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 
 			foreach ( $ids as $id ) {
 				$purchased = wc_customer_bought_product( $current_user->user_email, $current_user->ID, $id );
-
 				if ( $purchased ) {
 					return $purchased;
 				}
@@ -191,7 +207,7 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 				'meta_value'   => '0',
 				'meta_compare' => '>',
 				'post_status'  => 'publish',
-				'post_type'    => array( 'post', 'page' )
+				'post_type'    => self::get_post_types()
 
 			);
 

@@ -63,6 +63,10 @@ As of right now, there is no questions posed.
 
 == Changelog ==
 
+= 1.4.3 =
+* Updated the PURCHASED Shortcode to work with all custom post types by default.  Uses same Exclude post type functionality from settings screen.
+* Fixed PHP Warning message due to type
+
 = 1.4.2 =
 * Excluded WooCommerce default custom post types from adding PPP Meta Box on.
 * Added in field in settings for users to be able to exclude specific custom post types.
