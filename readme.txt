@@ -63,6 +63,10 @@ As of right now, there is no questions posed.
 
 == Changelog ==
 
+= 1.4.4 =
+* Changed the logic on custom post types.  Instead of including all post types by default and allowing users to exclude specific post types.  I now include only page, and post by default and then let users INCLUDE specific post types.
+* Not sure why I didn't program it that way to begin with.  Sorry all!
+
 = 1.4.3 =
 * Updated the PURCHASED Shortcode to work with all custom post types by default.  Uses same Exclude post type functionality from settings screen.
 * Fixed PHP Warning message due to type

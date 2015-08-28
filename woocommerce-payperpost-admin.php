@@ -20,6 +20,7 @@ class Woocommerce_PayPerPost_Admin {
     public static function register() {
         register_setting(WCPPP_ID . '_options', 'wcppp_oops_content');
         register_setting(WCPPP_ID . '_options', 'wcppp_exclude_post_types');
+        register_setting(WCPPP_ID . '_options', 'wcppp_include_post_types');
     }
 
     public static function menu() {

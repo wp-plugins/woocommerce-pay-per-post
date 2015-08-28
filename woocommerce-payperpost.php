@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.emoxie.com/woocommerce-pay-per-post/
  * Description: Allows for the sale of a specific post/page in Wordpress through WooCommerce
  * Author: Matt Pramschufer
- * Version: 1.4.3
+ * Version: 1.4.4
  * Author URI: http://www.emoxie.com/
  */
 if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
@@ -70,33 +70,22 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 		 * @return array
 		 */
 		protected static function get_post_types(){
-			$post_types = get_post_types();
 
-			$defaultExcludedPostTypes = array(
-				'attachment',
-				'revision',
-				'nav_menu_item',
-				'product',
-				'product_variation',
-				'shop_order',
-				'shop_order_refund',
-				'shop_coupon',
-				'shop_webhook'
+			$defaultIncludedPostTypes = array(
+				'page',
+				'post'
 			);
 
-			$userExcludedPostTypes = get_option( 'wcppp_exclude_post_types' );
-			$userExcludedPostTypes = explode(',', str_replace(' ', '',($userExcludedPostTypes)));
+			$userIncludedPostTypes = trim(get_option( 'wcppp_include_post_types' ));
 
-			$excludedPostTypes = array_merge($defaultExcludedPostTypes, $userExcludedPostTypes);
-
-			$postTypes = array();
-			foreach ( $post_types as $post_type ) {
-				if(!in_array($post_type,$excludedPostTypes)){
-					$postTypes[] = $post_type;
-				}
+			if(!empty($userIncludedPostTypes)){
+				$userIncludedPostTypes = explode(',', str_replace(' ', '',($userIncludedPostTypes)));
+				$includedPostTypes = array_merge($defaultIncludedPostTypes, $userIncludedPostTypes);
+			} else {
+				$includedPostTypes = $defaultIncludedPostTypes;
 			}
 
-			return $postTypes;
+			return $includedPostTypes;
 
 		}
 

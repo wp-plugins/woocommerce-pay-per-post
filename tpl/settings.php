@@ -27,8 +27,8 @@
             <tr>
                 <td>
                     <label for="wcppp_exclude_post_types">
-                        <p>If you would like to exclude a specific post type from having the PPP Meta Box you can enter it in below.  You can add multiples by seperating by a comma.</p>
-                        <p><input type="text" style="width:100%;" name="wcppp_exclude_post_types" value="<?php echo get_option('wcppp_exclude_post_types'); ?>"></p>
+                        <p>If you would like to INCLUDE a specific post type to have the PPP Meta Box.  You can enter it in below.  You can add multiples by seperating by a comma.</p>
+                        <p><input type="text" style="width:100%;" name="wcppp_include_post_types" value="<?php echo get_option('wcppp_include_post_types'); ?>"></p>
                     </label>
                 </td>
             </tr>
