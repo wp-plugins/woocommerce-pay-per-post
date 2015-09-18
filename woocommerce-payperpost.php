@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.emoxie.com/woocommerce-pay-per-post/
  * Description: Allows for the sale of a specific post/page in Wordpress through WooCommerce
  * Author: Matt Pramschufer
- * Version: 1.4.4
+ * Version: 1.4.5
  * Author URI: http://www.emoxie.com/
  */
 if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
@@ -99,25 +99,25 @@ if ( ! class_exists( 'Woocommerce_PayPerPost' ) ) {
 				'order'     => 'ASC',
 				'nopaging'  => true
 			);
-			$wp_query = new WP_Query( $args );
+
+			$wp_query = get_posts($args);
 			$dropdown = null;
 
 			$selected = explode( ',', Woocommerce_PayPerPost::get( Woocommerce_PayPerPost::METAKEY ) );
 
-			while( $wp_query->have_posts() ) : $wp_query->the_post();
+			foreach($wp_query as $product) {
+				$dropdown .= '<option value="' . $product->ID . '"';
 
-				$dropdown .= '<option value="' . get_the_ID() . '"';
-
-				if ( in_array( get_the_ID(), $selected ) ) {
+				if ( in_array( $product->ID, $selected ) ) {
 					$dropdown .= ' selected';
 				}
 
-				$dropdown .= '>' . get_the_title() . ' - [#' . get_the_ID() . ']</option>';
-
-			endwhile;
+				$dropdown .= '>' . $product->post_title . ' - [#' . $product->ID . ']</option>';
+			}
 
 			ob_start();
 			require WC_PPP_PATH . '/tpl/meta-box.php';
+
 			echo ob_get_clean();
 		}
 

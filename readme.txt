@@ -63,6 +63,10 @@ As of right now, there is no questions posed.
 
 == Changelog ==
 
+= 1.4.5 =
+* Changed the way I query the products to display the meta box on the admin pages.  This should correct issue with other plugin meta boxes not displaying previously inputted data.
+
+
 = 1.4.4 =
 * Changed the logic on custom post types.  Instead of including all post types by default and allowing users to exclude specific post types.  I now include only page, and post by default and then let users INCLUDE specific post types.
 * Not sure why I didn't program it that way to begin with.  Sorry all!
